@@ -17,7 +17,7 @@ try {
     echo "Connected successfully";
     foreach ($conn->query('SELECT * FROM usuarios') as $fila) {
         echo "<pre>";
-        print_r($fila);
+        print_r($fila['nombre_usuario']);
         echo "</pre>";
     }
   } catch(PDOException $e) {
