@@ -49,19 +49,40 @@ $arraY_filas = $select_pre->fetchAll();
                 <div style="background-color: <?= $fila['color_en'] ?>;color:<?=$color?>">
                         <p> <?php echo $fila['usuario'] ?> </p>
                         <span class="icons">
-                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="index.php?id=<?= $fila['id_color']?>">
+                        <i class="fa-regular fa-pen-to-square"></i></a>
                         <a href="delete.php?id=<?= $fila['id_color'] ?>">
                         <i class="fa-solid fa-trash-can">
                         </i>
                         </a>   
-                        
                     </span>
                 </div>
             <?php endforeach ?>      
         </section>
         <section>
-            <h2>Indica tus datos</h2>
-            <form action="insert.php" method="post">
+        <?php if (isset($_GET)) : ?>
+        <h2>Modifica tus datos</h2>
+        <section>
+        <form action="update.php" method="post">
+        <fieldset>
+        <div>
+        <label for="usuario">Nombre del usuario</label>
+        <input type="text" name="usuario" id="usuario" required>
+        </div>
+        <div>
+        <label for="usuario">Nombre del color:</label>
+        <input type="text" name="color" id="color" required>
+        </div>
+        <div>
+        <button type="submit">Enviar Datos</button>
+        <button type="reset">Limpiar formulario</button>
+        </div>
+        </fieldset>    
+        </section>        
+        <?php else: ?>
+        <section>
+        <h2>Indica tus datos</h2>
+        <form action="insert.php" method="post">
         <fieldset>
         <div>
         <label for="usuario">Nombre del usuario</label>
@@ -75,8 +96,12 @@ $arraY_filas = $select_pre->fetchAll();
             <button type="submit">Enviar Datos</button>
             <button type="reset">Limpiar formulario</button>
         </div>
+    
         </fieldset>    
         </section>
+
+        </form>
+        <?php endif ?>
     </main>
 </body>
 </html>
