@@ -1,6 +1,8 @@
 <?php
-//C:\xampp\php\php.exe -S localhost:8000
+
+
 // Datos de acceso a la base de datos
+
 $host = "127.0.0.1";
 $database = "colores";
 $database = "biblioteca";
