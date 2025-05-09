@@ -48,11 +48,14 @@ $arraY_filas = $select_pre->fetchAll();
                 ?>
                 <div style="background-color: <?= $fila['color_en'] ?>;color:<?=$color?>">
                         <p> <?php echo $fila['usuario'] ?> </p>
-                        <span>
-                        <i class="fa-solid fa-pen-to-square"></i>   
-                        <i class="fa-solid fa-trash-can"></i>
+                        <span class="icons">
+                        <a href=""><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a href="delete.php?id=<?= $fila['id_color'] ?>">
+                        <i class="fa-solid fa-trash-can">
+                        </i>
+                        </a>   
+                        
                     </span>
-                    
                 </div>
             <?php endforeach ?>      
         </section>

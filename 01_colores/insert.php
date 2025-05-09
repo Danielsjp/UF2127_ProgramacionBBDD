@@ -37,5 +37,8 @@ $insert_pre = $conn->prepare($insert);
 // 3. Ejecutar la sentencia
 $insert_pre-> execute([$usuario, $color_es, $array_colores_es_en[$color_es]]);
 
+$insert_pre = null;
+$conn = null;
+
 // volver a casa
 header('location: index.php');
