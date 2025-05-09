@@ -7,6 +7,8 @@
 
 require_once 'connection.php';
 
+$array_fondo_claro = ["white", "yellow", "pink", "orange","green"];
+
 // 1. Definir la sentencia (query)
 $select = "SELECT * FROM colores;";
 // 2. Preparar la sentencia
@@ -30,6 +32,7 @@ $arraY_filas = $select_pre->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,9 +41,17 @@ $arraY_filas = $select_pre->fetchAll();
         <section>
             <h2>Nuestros usuarios</h2>
             <?php foreach ($arraY_filas as $fila) : ?>
-
-                <div style="background-color: <?= $fila['color_en'] ?>;">
+                <?php $color = "white"; 
+                if (in_array($fila['color_en'], $array_fondo_claro)) {
+                    $color = "black";
+                }
+                ?>
+                <div style="background-color: <?= $fila['color_en'] ?>;color:<?=$color?>">
                         <p> <?php echo $fila['usuario'] ?> </p>
+                        <span>
+                        <i class="fa-solid fa-pen-to-square"></i>   
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
                     
                 </div>
             <?php endforeach ?>      
